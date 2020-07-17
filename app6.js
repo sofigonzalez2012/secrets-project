@@ -1,5 +1,4 @@
 require('dotenv').config();
-
 const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
@@ -27,7 +26,8 @@ app.use(passport.initialize());
 
 app.use(passport.session());
 
-mongoose.connect("mongodb://localhost:27017/userDB", {useNewUrlParser: true, useUnifiedTopology: true});
+// mongoose.connect("mongodb://localhost:27017/userDB", {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect("mongodb+srv://admin-sofia:"+process.env.ATLAS_PASSWORD+"@secrets-project-cluster.oargw.mongodb.net/secretsUsersDB");
 mongoose.set("useCreateIndex", true);
 
 
