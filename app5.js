@@ -39,6 +39,7 @@ userSchema.plugin(passportLocalMongoose);
 //Model
 const User = mongoose.model("User", userSchema);
 
+//Passport
 passport.use(User.createStrategy());
 
 passport.serializeUser(User.serializeUser());
@@ -65,18 +66,18 @@ app.get("/logout", function(req, res) {
 });
 
 app.get("/secrets", function(req, res) {
-  if (req.isAuthenticated()) {
+  if (req.isAuthenticated()) { //Check is user is logged in
     res.render("secrets");
   } else {
-    res.redirect("/login");
+    res.redirect("/login"); //Not logged in
   }
 });
 
 
 app.post("/register", function(req, res) {
 
-  //Thanks to the PassportLocalMongoose, it is not necessary to create and then save the user
-  //This function can be used instead
+  //It's not necessary to create and then save the user
+  //This PassportLocalMongoose function can be used instead
   User.register({username: req.body.username}, req.body.password, function(err, user) {
     if (err) {
       console.log(err);
@@ -87,9 +88,7 @@ app.post("/register", function(req, res) {
       });
     }
   });
-
 });
-
 
 
 app.post("/login", function(req, res) {
@@ -110,7 +109,6 @@ app.post("/login", function(req, res) {
   });
 
 });
-
 
 
 app.listen(3000, function() {
