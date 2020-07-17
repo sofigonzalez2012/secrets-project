@@ -92,7 +92,7 @@ passport.use(new FacebookStrategy( {
 
 
 //METHODS
-app.get("/", function(req, res) {
+app.get("https://secure-tor-61048.herokuapp.com", function(req, res) {
   res.render("home");
 });
 
