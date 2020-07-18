@@ -27,7 +27,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // mongoose.connect("mongodb://localhost:27017/userDB", {useNewUrlParser: true, useUnifiedTopology: true});
-mongoose.connect("mongodb+srv://admin-sofia:"+process.env.ATLAS_PASSWORD+"@secrets-project-cluster.oargw.mongodb.net/secretsUsersDB", , {
+mongoose.connect("mongodb+srv://admin-sofia:"+process.env.ATLAS_PASSWORD+"@secrets-project-cluster.oargw.mongodb.net/secretsUsersDB", {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
